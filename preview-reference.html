@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ProfitRide Preview</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#09090c;color:#fff;font-family:Arial,sans-serif;display:flex;justify-content:center;padding:24px}.phone{width:min(430px,100%);background:#0b0b0f;border-radius:34px;padding:22px;box-shadow:0 10px 50px #0008}h1{font-size:34px;margin:4px 0 2px}p.sub{color:#aaa;margin:0 0 18px}.card{background:#1d1d23;border-radius:20px;padding:16px;margin:12px 0}.row{display:flex;gap:8px;margin-top:12px}.box{flex:1;background:#303038;border-radius:15px;padding:12px 8px;text-align:center}.label{font-size:11px;color:#bbb}.value{font-size:18px;font-weight:800;margin-top:4px}.btns{display:flex;gap:10px}.btn{border:0;border-radius:18px;padding:16px;font-size:16px;font-weight:800;width:100%;cursor:pointer}.yellow{background:#ffd21c}.red{background:#ff5252;color:#fff}.green{background:#53cd60}.overlay{background:#101014;border:1px solid #333;border-radius:22px;padding:14px;margin:16px 0}.overlay h2{color:#ffd21c;margin:4px 0}.tiny{font-size:12px;color:#aaa}.verdict{margin-top:10px;font-weight:900;text-align:center}.good{color:#60dc6c}.input{width:100%;background:#303038;border:0;color:white;border-radius:14px;padding:14px;text-align:center;font-size:16px}.custom-row{display:grid;grid-template-columns:52px 1fr 52px;gap:8px;margin-top:8px}.step{border:0;border-radius:14px;background:#303038;color:#fff;font-size:25px;font-weight:800;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;min-height:52px;display:flex;align-items:center;justify-content:center}.step:active{transform:scale(.96)}.step.disabled{opacity:.35;pointer-events:none}.hint{font-size:12px;color:#aaa;line-height:1.4;margin-top:8px}.cost{font-size:15px;font-weight:800;color:#ddd;margin:13px 0}.field-label{font-size:13px;font-weight:800;margin-top:10px}.consumption-radio{position:absolute;opacity:0;pointer-events:none}.consumption-states{margin-top:8px}.cstate{display:none;grid-template-columns:52px 1fr 52px;gap:8px}.fake-input{min-height:52px;display:flex;align-items:center;justify-content:center;font-weight:800}.preview-note{font-size:11px;color:#8e8e99;margin-top:8px}
+#c20:checked ~ .consumption-states .s20{display:grid}
+#c21:checked ~ .consumption-states .s21{display:grid}
+#c22:checked ~ .consumption-states .s22{display:grid}
+#c23:checked ~ .consumption-states .s23{display:grid}
+#c24:checked ~ .consumption-states .s24{display:grid}
+#c25:checked ~ .consumption-states .s25{display:grid}
+#c26:checked ~ .consumption-states .s26{display:grid}
+#c27:checked ~ .consumption-states .s27{display:grid}
+#c28:checked ~ .consumption-states .s28{display:grid}
+#c29:checked ~ .consumption-states .s29{display:grid}
+#c30:checked ~ .consumption-states .s30{display:grid}
+#c31:checked ~ .consumption-states .s31{display:grid}
+#c32:checked ~ .consumption-states .s32{display:grid}
+#c33:checked ~ .consumption-states .s33{display:grid}
+#c34:checked ~ .consumption-states .s34{display:grid}
+#c35:checked ~ .consumption-states .s35{display:grid}
+#c36:checked ~ .consumption-states .s36{display:grid}
+#c37:checked ~ .consumption-states .s37{display:grid}
+#c38:checked ~ .consumption-states .s38{display:grid}
+#c39:checked ~ .consumption-states .s39{display:grid}
+#c40:checked ~ .consumption-states .s40{display:grid}
+#c41:checked ~ .consumption-states .s41{display:grid}
+#c42:checked ~ .consumption-states .s42{display:grid}
+#c43:checked ~ .consumption-states .s43{display:grid}
+#c44:checked ~ .consumption-states .s44{display:grid}
+#c45:checked ~ .consumption-states .s45{display:grid}
+#c46:checked ~ .consumption-states .s46{display:grid}
+#c47:checked ~ .consumption-states .s47{display:grid}
+#c48:checked ~ .consumption-states .s48{display:grid}
+#c49:checked ~ .consumption-states .s49{display:grid}
+#c50:checked ~ .consumption-states .s50{display:grid}
+#c51:checked ~ .consumption-states .s51{display:grid}
+#c52:checked ~ .consumption-states .s52{display:grid}
+#c53:checked ~ .consumption-states .s53{display:grid}
+#c54:checked ~ .consumption-states .s54{display:grid}
+#c55:checked ~ .consumption-states .s55{display:grid}
+#c56:checked ~ .consumption-states .s56{display:grid}
+#c57:checked ~ .consumption-states .s57{display:grid}
+#c58:checked ~ .consumption-states .s58{display:grid}
+#c59:checked ~ .consumption-states .s59{display:grid}
+#c60:checked ~ .consumption-states .s60{display:grid}
+#c61:checked ~ .consumption-states .s61{display:grid}
+#c62:checked ~ .consumption-states .s62{display:grid}
+#c63:checked ~ .consumption-states .s63{display:grid}
+#c64:checked ~ .consumption-states .s64{display:grid}
+#c65:checked ~ .consumption-states .s65{display:grid}
+#c66:checked ~ .consumption-states .s66{display:grid}
+#c67:checked ~ .consumption-states .s67{display:grid}
+#c68:checked ~ .consumption-states .s68{display:grid}
+#c69:checked ~ .consumption-states .s69{display:grid}
+#c70:checked ~ .consumption-states .s70{display:grid}
+#c71:checked ~ .consumption-states .s71{display:grid}
+#c72:checked ~ .consumption-states .s72{display:grid}
+#c73:checked ~ .consumption-states .s73{display:grid}
+#c74:checked ~ .consumption-states .s74{display:grid}
+#c75:checked ~ .consumption-states .s75{display:grid}
+#c76:checked ~ .consumption-states .s76{display:grid}
+#c77:checked ~ .consumption-states .s77{display:grid}
+#c78:checked ~ .consumption-states .s78{display:grid}
+#c79:checked ~ .consumption-states .s79{display:grid}
+#c80:checked ~ .consumption-states .s80{display:grid}
+#c81:checked ~ .consumption-states .s81{display:grid}
+#c82:checked ~ .consumption-states .s82{display:grid}
+#c83:checked ~ .consumption-states .s83{display:grid}
+#c84:checked ~ .consumption-states .s84{display:grid}
+#c85:checked ~ .consumption-states .s85{display:grid}
+#c86:checked ~ .consumption-states .s86{display:grid}
+#c87:checked ~ .consumption-states .s87{display:grid}
+#c88:checked ~ .consumption-states .s88{display:grid}
+#c89:checked ~ .consumption-states .s89{display:grid}
+#c90:checked ~ .consumption-states .s90{display:grid}
+#c91:checked ~ .consumption-states .s91{display:grid}
+#c92:checked ~ .consumption-states .s92{display:grid}
+#c93:checked ~ .consumption-states .s93{display:grid}
+#c94:checked ~ .consumption-states .s94{display:grid}
+#c95:checked ~ .consumption-states .s95{display:grid}
+#c96:checked ~ .consumption-states .s96{display:grid}
+#c97:checked ~ .consumption-states .s97{display:grid}
+#c98:checked ~ .consumption-states .s98{display:grid}
+#c99:checked ~ .consumption-states .s99{display:grid}
+#c100:checked ~ .consumption-states .s100{display:grid}
+#c101:checked ~ .consumption-states .s101{display:grid}
+#c102:checked ~ .consumption-states .s102{display:grid}
+#c103:checked ~ .consumption-states .s103{display:grid}
+#c104:checked ~ .consumption-states .s104{display:grid}
+#c105:checked ~ .consumption-states .s105{display:grid}
+#c106:checked ~ .consumption-states .s106{display:grid}
+#c107:checked ~ .consumption-states .s107{display:grid}
+#c108:checked ~ .consumption-states .s108{display:grid}
+#c109:checked ~ .consumption-states .s109{display:grid}
+#c110:checked ~ .consumption-states .s110{display:grid}
+#c111:checked ~ .consumption-states .s111{display:grid}
+#c112:checked ~ .consumption-states .s112{display:grid}
+#c113:checked ~ .consumption-states .s113{display:grid}
+#c114:checked ~ .consumption-states .s114{display:grid}
+#c115:checked ~ .consumption-states .s115{display:grid}
+#c116:checked ~ .consumption-states .s116{display:grid}
+#c117:checked ~ .consumption-states .s117{display:grid}
+#c118:checked ~ .consumption-states .s118{display:grid}
+#c119:checked ~ .consumption-states .s119{display:grid}
+#c120:checked ~ .consumption-states .s120{display:grid}
+#c121:checked ~ .consumption-states .s121{display:grid}
+#c122:checked ~ .consumption-states .s122{display:grid}
+#c123:checked ~ .consumption-states .s123{display:grid}
+#c124:checked ~ .consumption-states .s124{display:grid}
+#c125:checked ~ .consumption-states .s125{display:grid}
+#c126:checked ~ .consumption-states .s126{display:grid}
+#c127:checked ~ .consumption-states .s127{display:grid}
+#c128:checked ~ .consumption-states .s128{display:grid}
+#c129:checked ~ .consumption-states .s129{display:grid}
+#c130:checked ~ .consumption-states .s130{display:grid}
+#c131:checked ~ .consumption-states .s131{display:grid}
+#c132:checked ~ .consumption-states .s132{display:grid}
+#c133:checked ~ .consumption-states .s133{display:grid}
+#c134:checked ~ .consumption-states .s134{display:grid}
+#c135:checked ~ .consumption-states .s135{display:grid}
+#c136:checked ~ .consumption-states .s136{display:grid}
+#c137:checked ~ .consumption-states .s137{display:grid}
+#c138:checked ~ .consumption-states .s138{display:grid}
+#c139:checked ~ .consumption-states .s139{display:grid}
+#c140:checked ~ .consumption-states .s140{display:grid}
+#c141:checked ~ .consumption-states .s141{display:grid}
+#c142:checked ~ .consumption-states .s142{display:grid}
+#c143:checked ~ .consumption-states .s143{display:grid}
+#c144:checked ~ .consumption-states .s144{display:grid}
+#c145:checked ~ .consumption-states .s145{display:grid}
+#c146:checked ~ .consumption-states .s146{display:grid}
+#c147:checked ~ .consumption-states .s147{display:grid}
+#c148:checked ~ .consumption-states .s148{display:grid}
+#c149:checked ~ .consumption-states .s149{display:grid}
+#c150:checked ~ .consumption-states .s150{display:grid}
+#c151:checked ~ .consumption-states .s151{display:grid}
+#c152:checked ~ .consumption-states .s152{display:grid}
+#c153:checked ~ .consumption-states .s153{display:grid}
+#c154:checked ~ .consumption-states .s154{display:grid}
+#c155:checked ~ .consumption-states .s155{display:grid}
+#c156:checked ~ .consumption-states .s156{display:grid}
+#c157:checked ~ .consumption-states .s157{display:grid}
+#c158:checked ~ .consumption-states .s158{display:grid}
+#c159:checked ~ .consumption-states .s159{display:grid}
+#c160:checked ~ .consumption-states .s160{display:grid}
+#c161:checked ~ .consumption-states .s161{display:grid}
+#c162:checked ~ .consumption-states .s162{display:grid}
+#c163:checked ~ .consumption-states .s163{display:grid}
+#c164:checked ~ .consumption-states .s164{display:grid}
+#c165:checked ~ .consumption-states .s165{display:grid}
+#c166:checked ~ .consumption-states .s166{display:grid}
+#c167:checked ~ .consumption-states .s167{display:grid}
+#c168:checked ~ .consumption-states .s168{display:grid}
+#c169:checked ~ .consumption-states .s169{display:grid}
+#c170:checked ~ .consumption-states .s170{display:grid}
+#c171:checked ~ .consumption-states .s171{display:grid}
+#c172:checked ~ .consumption-states .s172{display:grid}
+#c173:checked ~ .consumption-states .s173{display:grid}
+#c174:checked ~ .consumption-states .s174{display:grid}
+#c175:checked ~ .consumption-states .s175{display:grid}
+#c176:checked ~ .consumption-states .s176{display:grid}
+#c177:checked ~ .consumption-states .s177{display:grid}
+#c178:checked ~ .consumption-states .s178{display:grid}
+#c179:checked ~ .consumption-states .s179{display:grid}
+#c180:checked ~ .consumption-states .s180{display:grid}
+#c181:checked ~ .consumption-states .s181{display:grid}
+#c182:checked ~ .consumption-states .s182{display:grid}
+#c183:checked ~ .consumption-states .s183{display:grid}
+#c184:checked ~ .consumption-states .s184{display:grid}
+#c185:checked ~ .consumption-states .s185{display:grid}
+#c186:checked ~ .consumption-states .s186{display:grid}
+#c187:checked ~ .consumption-states .s187{display:grid}
+#c188:checked ~ .consumption-states .s188{display:grid}
+#c189:checked ~ .consumption-states .s189{display:grid}
+#c190:checked ~ .consumption-states .s190{display:grid}
+#c191:checked ~ .consumption-states .s191{display:grid}
+#c192:checked ~ .consumption-states .s192{display:grid}
+#c193:checked ~ .consumption-states .s193{display:grid}
+#c194:checked ~ .consumption-states .s194{display:grid}
+#c195:checked ~ .consumption-states .s195{display:grid}
+#c196:checked ~ .consumption-states .s196{display:grid}
+#c197:checked ~ .consumption-states .s197{display:grid}
+#c198:checked ~ .consumption-states .s198{display:grid}
+#c199:checked ~ .consumption-states .s199{display:grid}
+#c200:checked ~ .consumption-states .s200{display:grid}
+#c201:checked ~ .consumption-states .s201{display:grid}
+#c202:checked ~ .consumption-states .s202{display:grid}
+#c203:checked ~ .consumption-states .s203{display:grid}
+#c204:checked ~ .consumption-states .s204{display:grid}
+#c205:checked ~ .consumption-states .s205{display:grid}
+#c206:checked ~ .consumption-states .s206{display:grid}
+#c207:checked ~ .consumption-states .s207{display:grid}
+#c208:checked ~ .consumption-states .s208{display:grid}
+#c209:checked ~ .consumption-states .s209{display:grid}
+#c210:checked ~ .consumption-states .s210{display:grid}
+#c211:checked ~ .consumption-states .s211{display:grid}
+#c212:checked ~ .consumption-states .s212{display:grid}
+#c213:checked ~ .consumption-states .s213{display:grid}
+#c214:checked ~ .consumption-states .s214{display:grid}
+#c215:checked ~ .consumption-states .s215{display:grid}
+#c216:checked ~ .consumption-states .s216{display:grid}
+#c217:checked ~ .consumption-states .s217{display:grid}
+#c218:checked ~ .consumption-states .s218{display:grid}
+#c219:checked ~ .consumption-states .s219{display:grid}
+#c220:checked ~ .consumption-states .s220{display:grid}
+#c221:checked ~ .consumption-states .s221{display:grid}
+#c222:checked ~ .consumption-states .s222{display:grid}
+#c223:checked ~ .consumption-states .s223{display:grid}
+#c224:checked ~ .consumption-states .s224{display:grid}
+#c225:checked ~ .consumption-states .s225{display:grid}
+#c226:checked ~ .consumption-states .s226{display:grid}
+#c227:checked ~ .consumption-states .s227{display:grid}
+#c228:checked ~ .consumption-states .s228{display:grid}
+#c229:checked ~ .consumption-states .s229{display:grid}
+#c230:checked ~ .consumption-states .s230{display:grid}
+#c231:checked ~ .consumption-states .s231{display:grid}
+#c232:checked ~ .consumption-states .s232{display:grid}
+#c233:checked ~ .consumption-states .s233{display:grid}
+#c234:checked ~ .consumption-states .s234{display:grid}
+#c235:checked ~ .consumption-states .s235{display:grid}
+#c236:checked ~ .consumption-states .s236{display:grid}
+#c237:checked ~ .consumption-states .s237{display:grid}
+#c238:checked ~ .consumption-states .s238{display:grid}
+#c239:checked ~ .consumption-states .s239{display:grid}
+#c240:checked ~ .consumption-states .s240{display:grid}
+#c241:checked ~ .consumption-states .s241{display:grid}
+#c242:checked ~ .consumption-states .s242{display:grid}
+#c243:checked ~ .consumption-states .s243{display:grid}
+#c244:checked ~ .consumption-states .s244{display:grid}
+#c245:checked ~ .consumption-states .s245{display:grid}
+#c246:checked ~ .consumption-states .s246{display:grid}
+#c247:checked ~ .consumption-states .s247{display:grid}
+#c248:checked ~ .consumption-states .s248{display:grid}
+#c249:checked ~ .consumption-states .s249{display:grid}
+#c250:checked ~ .consumption-states .s250{display:grid}
+#c251:checked ~ .consumption-states .s251{display:grid}
+#c252:checked ~ .consumption-states .s252{display:grid}
+#c253:checked ~ .consumption-states .s253{display:grid}
+#c254:checked ~ .consumption-states .s254{display:grid}
+#c255:checked ~ .consumption-states .s255{display:grid}
+#c256:checked ~ .consumption-states .s256{display:grid}
+#c257:checked ~ .consumption-states .s257{display:grid}
+#c258:checked ~ .consumption-states .s258{display:grid}
+#c259:checked ~ .consumption-states .s259{display:grid}
+#c260:checked ~ .consumption-states .s260{display:grid}
+#c261:checked ~ .consumption-states .s261{display:grid}
+#c262:checked ~ .consumption-states .s262{display:grid}
+#c263:checked ~ .consumption-states .s263{display:grid}
+#c264:checked ~ .consumption-states .s264{display:grid}
+#c265:checked ~ .consumption-states .s265{display:grid}
+#c266:checked ~ .consumption-states .s266{display:grid}
+#c267:checked ~ .consumption-states .s267{display:grid}
+#c268:checked ~ .consumption-states .s268{display:grid}
+#c269:checked ~ .consumption-states .s269{display:grid}
+#c270:checked ~ .consumption-states .s270{display:grid}
+#c271:checked ~ .consumption-states .s271{display:grid}
+#c272:checked ~ .consumption-states .s272{display:grid}
+#c273:checked ~ .consumption-states .s273{display:grid}
+#c274:checked ~ .consumption-states .s274{display:grid}
+#c275:checked ~ .consumption-states .s275{display:grid}
+#c276:checked ~ .consumption-states .s276{display:grid}
+#c277:checked ~ .consumption-states .s277{display:grid}
+#c278:checked ~ .consumption-states .s278{display:grid}
+#c279:checked ~ .consumption-states .s279{display:grid}
+#c280:checked ~ .consumption-states .s280{display:grid}
+#c281:checked ~ .consumption-states .s281{display:grid}
+#c282:checked ~ .consumption-states .s282{display:grid}
+#c283:checked ~ .consumption-states .s283{display:grid}
+#c284:checked ~ .consumption-states .s284{display:grid}
+#c285:checked ~ .consumption-states .s285{display:grid}
+#c286:checked ~ .consumption-states .s286{display:grid}
+#c287:checked ~ .consumption-states .s287{display:grid}
+#c288:checked ~ .consumption-states .s288{display:grid}
+#c289:checked ~ .consumption-states .s289{display:grid}
+#c290:checked ~ .consumption-states .s290{display:grid}
+#c291:checked ~ .consumption-states .s291{display:grid}
+#c292:checked ~ .consumption-states .s292{display:grid}
+#c293:checked ~ .consumption-states .s293{display:grid}
+#c294:checked ~ .consumption-states .s294{display:grid}
+#c295:checked ~ .consumption-states .s295{display:grid}
+#c296:checked ~ .consumption-states .s296{display:grid}
+#c297:checked ~ .consumption-states .s297{display:grid}
+#c298:checked ~ .consumption-states .s298{display:grid}
+#c299:checked ~ .consumption-states .s299{display:grid}
+#c300:checked ~ .consumption-states .s300{display:grid}
+</style>
+</head>
+<body>
+<div class="phone">
+<h1>ProfitRide</h1><p class="sub">Calculator live pentru ofertele de cursă</p>
+<div class="card"><b>Praguri profit</b><div class="row"><div class="box"><div class="label">RON/oră</div><div class="value">80</div></div><div class="box"><div class="label">RON/min</div><div class="value">1,30</div></div><div class="box"><div class="label">RON/km</div><div class="value">3,00</div></div></div></div>
+<div class="card">
+<b>Cost mașină</b>
+<div class="field-label">Consum personalizat al mașinii (L/100 km)</div>
+<input class="consumption-radio" type="radio" name="consumptionStep" id="c20" value="2.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c21" value="2.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c22" value="2.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c23" value="2.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c24" value="2.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c25" value="2.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c26" value="2.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c27" value="2.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c28" value="2.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c29" value="2.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c30" value="3.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c31" value="3.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c32" value="3.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c33" value="3.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c34" value="3.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c35" value="3.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c36" value="3.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c37" value="3.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c38" value="3.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c39" value="3.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c40" value="4.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c41" value="4.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c42" value="4.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c43" value="4.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c44" value="4.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c45" value="4.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c46" value="4.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c47" value="4.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c48" value="4.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c49" value="4.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c50" value="5.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c51" value="5.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c52" value="5.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c53" value="5.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c54" value="5.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c55" value="5.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c56" value="5.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c57" value="5.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c58" value="5.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c59" value="5.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c60" value="6.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c61" value="6.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c62" value="6.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c63" value="6.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c64" value="6.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c65" value="6.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c66" value="6.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c67" value="6.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c68" value="6.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c69" value="6.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c70" value="7.0" checked><input class="consumption-radio" type="radio" name="consumptionStep" id="c71" value="7.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c72" value="7.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c73" value="7.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c74" value="7.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c75" value="7.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c76" value="7.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c77" value="7.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c78" value="7.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c79" value="7.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c80" value="8.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c81" value="8.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c82" value="8.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c83" value="8.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c84" value="8.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c85" value="8.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c86" value="8.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c87" value="8.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c88" value="8.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c89" value="8.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c90" value="9.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c91" value="9.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c92" value="9.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c93" value="9.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c94" value="9.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c95" value="9.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c96" value="9.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c97" value="9.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c98" value="9.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c99" value="9.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c100" value="10.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c101" value="10.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c102" value="10.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c103" value="10.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c104" value="10.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c105" value="10.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c106" value="10.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c107" value="10.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c108" value="10.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c109" value="10.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c110" value="11.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c111" value="11.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c112" value="11.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c113" value="11.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c114" value="11.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c115" value="11.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c116" value="11.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c117" value="11.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c118" value="11.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c119" value="11.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c120" value="12.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c121" value="12.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c122" value="12.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c123" value="12.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c124" value="12.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c125" value="12.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c126" value="12.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c127" value="12.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c128" value="12.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c129" value="12.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c130" value="13.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c131" value="13.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c132" value="13.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c133" value="13.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c134" value="13.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c135" value="13.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c136" value="13.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c137" value="13.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c138" value="13.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c139" value="13.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c140" value="14.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c141" value="14.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c142" value="14.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c143" value="14.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c144" value="14.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c145" value="14.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c146" value="14.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c147" value="14.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c148" value="14.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c149" value="14.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c150" value="15.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c151" value="15.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c152" value="15.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c153" value="15.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c154" value="15.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c155" value="15.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c156" value="15.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c157" value="15.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c158" value="15.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c159" value="15.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c160" value="16.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c161" value="16.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c162" value="16.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c163" value="16.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c164" value="16.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c165" value="16.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c166" value="16.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c167" value="16.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c168" value="16.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c169" value="16.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c170" value="17.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c171" value="17.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c172" value="17.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c173" value="17.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c174" value="17.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c175" value="17.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c176" value="17.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c177" value="17.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c178" value="17.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c179" value="17.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c180" value="18.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c181" value="18.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c182" value="18.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c183" value="18.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c184" value="18.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c185" value="18.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c186" value="18.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c187" value="18.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c188" value="18.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c189" value="18.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c190" value="19.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c191" value="19.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c192" value="19.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c193" value="19.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c194" value="19.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c195" value="19.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c196" value="19.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c197" value="19.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c198" value="19.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c199" value="19.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c200" value="20.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c201" value="20.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c202" value="20.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c203" value="20.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c204" value="20.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c205" value="20.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c206" value="20.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c207" value="20.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c208" value="20.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c209" value="20.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c210" value="21.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c211" value="21.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c212" value="21.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c213" value="21.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c214" value="21.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c215" value="21.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c216" value="21.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c217" value="21.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c218" value="21.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c219" value="21.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c220" value="22.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c221" value="22.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c222" value="22.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c223" value="22.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c224" value="22.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c225" value="22.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c226" value="22.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c227" value="22.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c228" value="22.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c229" value="22.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c230" value="23.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c231" value="23.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c232" value="23.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c233" value="23.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c234" value="23.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c235" value="23.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c236" value="23.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c237" value="23.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c238" value="23.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c239" value="23.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c240" value="24.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c241" value="24.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c242" value="24.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c243" value="24.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c244" value="24.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c245" value="24.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c246" value="24.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c247" value="24.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c248" value="24.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c249" value="24.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c250" value="25.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c251" value="25.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c252" value="25.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c253" value="25.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c254" value="25.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c255" value="25.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c256" value="25.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c257" value="25.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c258" value="25.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c259" value="25.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c260" value="26.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c261" value="26.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c262" value="26.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c263" value="26.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c264" value="26.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c265" value="26.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c266" value="26.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c267" value="26.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c268" value="26.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c269" value="26.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c270" value="27.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c271" value="27.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c272" value="27.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c273" value="27.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c274" value="27.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c275" value="27.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c276" value="27.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c277" value="27.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c278" value="27.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c279" value="27.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c280" value="28.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c281" value="28.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c282" value="28.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c283" value="28.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c284" value="28.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c285" value="28.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c286" value="28.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c287" value="28.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c288" value="28.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c289" value="28.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c290" value="29.0"><input class="consumption-radio" type="radio" name="consumptionStep" id="c291" value="29.1"><input class="consumption-radio" type="radio" name="consumptionStep" id="c292" value="29.2"><input class="consumption-radio" type="radio" name="consumptionStep" id="c293" value="29.3"><input class="consumption-radio" type="radio" name="consumptionStep" id="c294" value="29.4"><input class="consumption-radio" type="radio" name="consumptionStep" id="c295" value="29.5"><input class="consumption-radio" type="radio" name="consumptionStep" id="c296" value="29.6"><input class="consumption-radio" type="radio" name="consumptionStep" id="c297" value="29.7"><input class="consumption-radio" type="radio" name="consumptionStep" id="c298" value="29.8"><input class="consumption-radio" type="radio" name="consumptionStep" id="c299" value="29.9"><input class="consumption-radio" type="radio" name="consumptionStep" id="c300" value="30.0">
+<div class="consumption-states"><div class="cstate s20" data-consumption="2.0">
+<label class="step disabled" for="c20" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.0</div>
+<label class="step" for="c21" aria-label="Crește consumul">+</label>
+</div><div class="cstate s21" data-consumption="2.1">
+<label class="step" for="c20" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.1</div>
+<label class="step" for="c22" aria-label="Crește consumul">+</label>
+</div><div class="cstate s22" data-consumption="2.2">
+<label class="step" for="c21" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.2</div>
+<label class="step" for="c23" aria-label="Crește consumul">+</label>
+</div><div class="cstate s23" data-consumption="2.3">
+<label class="step" for="c22" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.3</div>
+<label class="step" for="c24" aria-label="Crește consumul">+</label>
+</div><div class="cstate s24" data-consumption="2.4">
+<label class="step" for="c23" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.4</div>
+<label class="step" for="c25" aria-label="Crește consumul">+</label>
+</div><div class="cstate s25" data-consumption="2.5">
+<label class="step" for="c24" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.5</div>
+<label class="step" for="c26" aria-label="Crește consumul">+</label>
+</div><div class="cstate s26" data-consumption="2.6">
+<label class="step" for="c25" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.6</div>
+<label class="step" for="c27" aria-label="Crește consumul">+</label>
+</div><div class="cstate s27" data-consumption="2.7">
+<label class="step" for="c26" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.7</div>
+<label class="step" for="c28" aria-label="Crește consumul">+</label>
+</div><div class="cstate s28" data-consumption="2.8">
+<label class="step" for="c27" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.8</div>
+<label class="step" for="c29" aria-label="Crește consumul">+</label>
+</div><div class="cstate s29" data-consumption="2.9">
+<label class="step" for="c28" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">2.9</div>
+<label class="step" for="c30" aria-label="Crește consumul">+</label>
+</div><div class="cstate s30" data-consumption="3.0">
+<label class="step" for="c29" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.0</div>
+<label class="step" for="c31" aria-label="Crește consumul">+</label>
+</div><div class="cstate s31" data-consumption="3.1">
+<label class="step" for="c30" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.1</div>
+<label class="step" for="c32" aria-label="Crește consumul">+</label>
+</div><div class="cstate s32" data-consumption="3.2">
+<label class="step" for="c31" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.2</div>
+<label class="step" for="c33" aria-label="Crește consumul">+</label>
+</div><div class="cstate s33" data-consumption="3.3">
+<label class="step" for="c32" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.3</div>
+<label class="step" for="c34" aria-label="Crește consumul">+</label>
+</div><div class="cstate s34" data-consumption="3.4">
+<label class="step" for="c33" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.4</div>
+<label class="step" for="c35" aria-label="Crește consumul">+</label>
+</div><div class="cstate s35" data-consumption="3.5">
+<label class="step" for="c34" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.5</div>
+<label class="step" for="c36" aria-label="Crește consumul">+</label>
+</div><div class="cstate s36" data-consumption="3.6">
+<label class="step" for="c35" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.6</div>
+<label class="step" for="c37" aria-label="Crește consumul">+</label>
+</div><div class="cstate s37" data-consumption="3.7">
+<label class="step" for="c36" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.7</div>
+<label class="step" for="c38" aria-label="Crește consumul">+</label>
+</div><div class="cstate s38" data-consumption="3.8">
+<label class="step" for="c37" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.8</div>
+<label class="step" for="c39" aria-label="Crește consumul">+</label>
+</div><div class="cstate s39" data-consumption="3.9">
+<label class="step" for="c38" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">3.9</div>
+<label class="step" for="c40" aria-label="Crește consumul">+</label>
+</div><div class="cstate s40" data-consumption="4.0">
+<label class="step" for="c39" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.0</div>
+<label class="step" for="c41" aria-label="Crește consumul">+</label>
+</div><div class="cstate s41" data-consumption="4.1">
+<label class="step" for="c40" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.1</div>
+<label class="step" for="c42" aria-label="Crește consumul">+</label>
+</div><div class="cstate s42" data-consumption="4.2">
+<label class="step" for="c41" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.2</div>
+<label class="step" for="c43" aria-label="Crește consumul">+</label>
+</div><div class="cstate s43" data-consumption="4.3">
+<label class="step" for="c42" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.3</div>
+<label class="step" for="c44" aria-label="Crește consumul">+</label>
+</div><div class="cstate s44" data-consumption="4.4">
+<label class="step" for="c43" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.4</div>
+<label class="step" for="c45" aria-label="Crește consumul">+</label>
+</div><div class="cstate s45" data-consumption="4.5">
+<label class="step" for="c44" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.5</div>
+<label class="step" for="c46" aria-label="Crește consumul">+</label>
+</div><div class="cstate s46" data-consumption="4.6">
+<label class="step" for="c45" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.6</div>
+<label class="step" for="c47" aria-label="Crește consumul">+</label>
+</div><div class="cstate s47" data-consumption="4.7">
+<label class="step" for="c46" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.7</div>
+<label class="step" for="c48" aria-label="Crește consumul">+</label>
+</div><div class="cstate s48" data-consumption="4.8">
+<label class="step" for="c47" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.8</div>
+<label class="step" for="c49" aria-label="Crește consumul">+</label>
+</div><div class="cstate s49" data-consumption="4.9">
+<label class="step" for="c48" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">4.9</div>
+<label class="step" for="c50" aria-label="Crește consumul">+</label>
+</div><div class="cstate s50" data-consumption="5.0">
+<label class="step" for="c49" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.0</div>
+<label class="step" for="c51" aria-label="Crește consumul">+</label>
+</div><div class="cstate s51" data-consumption="5.1">
+<label class="step" for="c50" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.1</div>
+<label class="step" for="c52" aria-label="Crește consumul">+</label>
+</div><div class="cstate s52" data-consumption="5.2">
+<label class="step" for="c51" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.2</div>
+<label class="step" for="c53" aria-label="Crește consumul">+</label>
+</div><div class="cstate s53" data-consumption="5.3">
+<label class="step" for="c52" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.3</div>
+<label class="step" for="c54" aria-label="Crește consumul">+</label>
+</div><div class="cstate s54" data-consumption="5.4">
+<label class="step" for="c53" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.4</div>
+<label class="step" for="c55" aria-label="Crește consumul">+</label>
+</div><div class="cstate s55" data-consumption="5.5">
+<label class="step" for="c54" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.5</div>
+<label class="step" for="c56" aria-label="Crește consumul">+</label>
+</div><div class="cstate s56" data-consumption="5.6">
+<label class="step" for="c55" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.6</div>
+<label class="step" for="c57" aria-label="Crește consumul">+</label>
+</div><div class="cstate s57" data-consumption="5.7">
+<label class="step" for="c56" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.7</div>
+<label class="step" for="c58" aria-label="Crește consumul">+</label>
+</div><div class="cstate s58" data-consumption="5.8">
+<label class="step" for="c57" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.8</div>
+<label class="step" for="c59" aria-label="Crește consumul">+</label>
+</div><div class="cstate s59" data-consumption="5.9">
+<label class="step" for="c58" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">5.9</div>
+<label class="step" for="c60" aria-label="Crește consumul">+</label>
+</div><div class="cstate s60" data-consumption="6.0">
+<label class="step" for="c59" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.0</div>
+<label class="step" for="c61" aria-label="Crește consumul">+</label>
+</div><div class="cstate s61" data-consumption="6.1">
+<label class="step" for="c60" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.1</div>
+<label class="step" for="c62" aria-label="Crește consumul">+</label>
+</div><div class="cstate s62" data-consumption="6.2">
+<label class="step" for="c61" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.2</div>
+<label class="step" for="c63" aria-label="Crește consumul">+</label>
+</div><div class="cstate s63" data-consumption="6.3">
+<label class="step" for="c62" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.3</div>
+<label class="step" for="c64" aria-label="Crește consumul">+</label>
+</div><div class="cstate s64" data-consumption="6.4">
+<label class="step" for="c63" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.4</div>
+<label class="step" for="c65" aria-label="Crește consumul">+</label>
+</div><div class="cstate s65" data-consumption="6.5">
+<label class="step" for="c64" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.5</div>
+<label class="step" for="c66" aria-label="Crește consumul">+</label>
+</div><div class="cstate s66" data-consumption="6.6">
+<label class="step" for="c65" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.6</div>
+<label class="step" for="c67" aria-label="Crește consumul">+</label>
+</div><div class="cstate s67" data-consumption="6.7">
+<label class="step" for="c66" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.7</div>
+<label class="step" for="c68" aria-label="Crește consumul">+</label>
+</div><div class="cstate s68" data-consumption="6.8">
+<label class="step" for="c67" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.8</div>
+<label class="step" for="c69" aria-label="Crește consumul">+</label>
+</div><div class="cstate s69" data-consumption="6.9">
+<label class="step" for="c68" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">6.9</div>
+<label class="step" for="c70" aria-label="Crește consumul">+</label>
+</div><div class="cstate s70" data-consumption="7.0">
+<label class="step" for="c69" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.0</div>
+<label class="step" for="c71" aria-label="Crește consumul">+</label>
+</div><div class="cstate s71" data-consumption="7.1">
+<label class="step" for="c70" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.1</div>
+<label class="step" for="c72" aria-label="Crește consumul">+</label>
+</div><div class="cstate s72" data-consumption="7.2">
+<label class="step" for="c71" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.2</div>
+<label class="step" for="c73" aria-label="Crește consumul">+</label>
+</div><div class="cstate s73" data-consumption="7.3">
+<label class="step" for="c72" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.3</div>
+<label class="step" for="c74" aria-label="Crește consumul">+</label>
+</div><div class="cstate s74" data-consumption="7.4">
+<label class="step" for="c73" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.4</div>
+<label class="step" for="c75" aria-label="Crește consumul">+</label>
+</div><div class="cstate s75" data-consumption="7.5">
+<label class="step" for="c74" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.5</div>
+<label class="step" for="c76" aria-label="Crește consumul">+</label>
+</div><div class="cstate s76" data-consumption="7.6">
+<label class="step" for="c75" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.6</div>
+<label class="step" for="c77" aria-label="Crește consumul">+</label>
+</div><div class="cstate s77" data-consumption="7.7">
+<label class="step" for="c76" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.7</div>
+<label class="step" for="c78" aria-label="Crește consumul">+</label>
+</div><div class="cstate s78" data-consumption="7.8">
+<label class="step" for="c77" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.8</div>
+<label class="step" for="c79" aria-label="Crește consumul">+</label>
+</div><div class="cstate s79" data-consumption="7.9">
+<label class="step" for="c78" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">7.9</div>
+<label class="step" for="c80" aria-label="Crește consumul">+</label>
+</div><div class="cstate s80" data-consumption="8.0">
+<label class="step" for="c79" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.0</div>
+<label class="step" for="c81" aria-label="Crește consumul">+</label>
+</div><div class="cstate s81" data-consumption="8.1">
+<label class="step" for="c80" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.1</div>
+<label class="step" for="c82" aria-label="Crește consumul">+</label>
+</div><div class="cstate s82" data-consumption="8.2">
+<label class="step" for="c81" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.2</div>
+<label class="step" for="c83" aria-label="Crește consumul">+</label>
+</div><div class="cstate s83" data-consumption="8.3">
+<label class="step" for="c82" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.3</div>
+<label class="step" for="c84" aria-label="Crește consumul">+</label>
+</div><div class="cstate s84" data-consumption="8.4">
+<label class="step" for="c83" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.4</div>
+<label class="step" for="c85" aria-label="Crește consumul">+</label>
+</div><div class="cstate s85" data-consumption="8.5">
+<label class="step" for="c84" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.5</div>
+<label class="step" for="c86" aria-label="Crește consumul">+</label>
+</div><div class="cstate s86" data-consumption="8.6">
+<label class="step" for="c85" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.6</div>
+<label class="step" for="c87" aria-label="Crește consumul">+</label>
+</div><div class="cstate s87" data-consumption="8.7">
+<label class="step" for="c86" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.7</div>
+<label class="step" for="c88" aria-label="Crește consumul">+</label>
+</div><div class="cstate s88" data-consumption="8.8">
+<label class="step" for="c87" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.8</div>
+<label class="step" for="c89" aria-label="Crește consumul">+</label>
+</div><div class="cstate s89" data-consumption="8.9">
+<label class="step" for="c88" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">8.9</div>
+<label class="step" for="c90" aria-label="Crește consumul">+</label>
+</div><div class="cstate s90" data-consumption="9.0">
+<label class="step" for="c89" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.0</div>
+<label class="step" for="c91" aria-label="Crește consumul">+</label>
+</div><div class="cstate s91" data-consumption="9.1">
+<label class="step" for="c90" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.1</div>
+<label class="step" for="c92" aria-label="Crește consumul">+</label>
+</div><div class="cstate s92" data-consumption="9.2">
+<label class="step" for="c91" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.2</div>
+<label class="step" for="c93" aria-label="Crește consumul">+</label>
+</div><div class="cstate s93" data-consumption="9.3">
+<label class="step" for="c92" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.3</div>
+<label class="step" for="c94" aria-label="Crește consumul">+</label>
+</div><div class="cstate s94" data-consumption="9.4">
+<label class="step" for="c93" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.4</div>
+<label class="step" for="c95" aria-label="Crește consumul">+</label>
+</div><div class="cstate s95" data-consumption="9.5">
+<label class="step" for="c94" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.5</div>
+<label class="step" for="c96" aria-label="Crește consumul">+</label>
+</div><div class="cstate s96" data-consumption="9.6">
+<label class="step" for="c95" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.6</div>
+<label class="step" for="c97" aria-label="Crește consumul">+</label>
+</div><div class="cstate s97" data-consumption="9.7">
+<label class="step" for="c96" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.7</div>
+<label class="step" for="c98" aria-label="Crește consumul">+</label>
+</div><div class="cstate s98" data-consumption="9.8">
+<label class="step" for="c97" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.8</div>
+<label class="step" for="c99" aria-label="Crește consumul">+</label>
+</div><div class="cstate s99" data-consumption="9.9">
+<label class="step" for="c98" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">9.9</div>
+<label class="step" for="c100" aria-label="Crește consumul">+</label>
+</div><div class="cstate s100" data-consumption="10.0">
+<label class="step" for="c99" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.0</div>
+<label class="step" for="c101" aria-label="Crește consumul">+</label>
+</div><div class="cstate s101" data-consumption="10.1">
+<label class="step" for="c100" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.1</div>
+<label class="step" for="c102" aria-label="Crește consumul">+</label>
+</div><div class="cstate s102" data-consumption="10.2">
+<label class="step" for="c101" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.2</div>
+<label class="step" for="c103" aria-label="Crește consumul">+</label>
+</div><div class="cstate s103" data-consumption="10.3">
+<label class="step" for="c102" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.3</div>
+<label class="step" for="c104" aria-label="Crește consumul">+</label>
+</div><div class="cstate s104" data-consumption="10.4">
+<label class="step" for="c103" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.4</div>
+<label class="step" for="c105" aria-label="Crește consumul">+</label>
+</div><div class="cstate s105" data-consumption="10.5">
+<label class="step" for="c104" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.5</div>
+<label class="step" for="c106" aria-label="Crește consumul">+</label>
+</div><div class="cstate s106" data-consumption="10.6">
+<label class="step" for="c105" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.6</div>
+<label class="step" for="c107" aria-label="Crește consumul">+</label>
+</div><div class="cstate s107" data-consumption="10.7">
+<label class="step" for="c106" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.7</div>
+<label class="step" for="c108" aria-label="Crește consumul">+</label>
+</div><div class="cstate s108" data-consumption="10.8">
+<label class="step" for="c107" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.8</div>
+<label class="step" for="c109" aria-label="Crește consumul">+</label>
+</div><div class="cstate s109" data-consumption="10.9">
+<label class="step" for="c108" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">10.9</div>
+<label class="step" for="c110" aria-label="Crește consumul">+</label>
+</div><div class="cstate s110" data-consumption="11.0">
+<label class="step" for="c109" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.0</div>
+<label class="step" for="c111" aria-label="Crește consumul">+</label>
+</div><div class="cstate s111" data-consumption="11.1">
+<label class="step" for="c110" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.1</div>
+<label class="step" for="c112" aria-label="Crește consumul">+</label>
+</div><div class="cstate s112" data-consumption="11.2">
+<label class="step" for="c111" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.2</div>
+<label class="step" for="c113" aria-label="Crește consumul">+</label>
+</div><div class="cstate s113" data-consumption="11.3">
+<label class="step" for="c112" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.3</div>
+<label class="step" for="c114" aria-label="Crește consumul">+</label>
+</div><div class="cstate s114" data-consumption="11.4">
+<label class="step" for="c113" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.4</div>
+<label class="step" for="c115" aria-label="Crește consumul">+</label>
+</div><div class="cstate s115" data-consumption="11.5">
+<label class="step" for="c114" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.5</div>
+<label class="step" for="c116" aria-label="Crește consumul">+</label>
+</div><div class="cstate s116" data-consumption="11.6">
+<label class="step" for="c115" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.6</div>
+<label class="step" for="c117" aria-label="Crește consumul">+</label>
+</div><div class="cstate s117" data-consumption="11.7">
+<label class="step" for="c116" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.7</div>
+<label class="step" for="c118" aria-label="Crește consumul">+</label>
+</div><div class="cstate s118" data-consumption="11.8">
+<label class="step" for="c117" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.8</div>
+<label class="step" for="c119" aria-label="Crește consumul">+</label>
+</div><div class="cstate s119" data-consumption="11.9">
+<label class="step" for="c118" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">11.9</div>
+<label class="step" for="c120" aria-label="Crește consumul">+</label>
+</div><div class="cstate s120" data-consumption="12.0">
+<label class="step" for="c119" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.0</div>
+<label class="step" for="c121" aria-label="Crește consumul">+</label>
+</div><div class="cstate s121" data-consumption="12.1">
+<label class="step" for="c120" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.1</div>
+<label class="step" for="c122" aria-label="Crește consumul">+</label>
+</div><div class="cstate s122" data-consumption="12.2">
+<label class="step" for="c121" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.2</div>
+<label class="step" for="c123" aria-label="Crește consumul">+</label>
+</div><div class="cstate s123" data-consumption="12.3">
+<label class="step" for="c122" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.3</div>
+<label class="step" for="c124" aria-label="Crește consumul">+</label>
+</div><div class="cstate s124" data-consumption="12.4">
+<label class="step" for="c123" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.4</div>
+<label class="step" for="c125" aria-label="Crește consumul">+</label>
+</div><div class="cstate s125" data-consumption="12.5">
+<label class="step" for="c124" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.5</div>
+<label class="step" for="c126" aria-label="Crește consumul">+</label>
+</div><div class="cstate s126" data-consumption="12.6">
+<label class="step" for="c125" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.6</div>
+<label class="step" for="c127" aria-label="Crește consumul">+</label>
+</div><div class="cstate s127" data-consumption="12.7">
+<label class="step" for="c126" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.7</div>
+<label class="step" for="c128" aria-label="Crește consumul">+</label>
+</div><div class="cstate s128" data-consumption="12.8">
+<label class="step" for="c127" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.8</div>
+<label class="step" for="c129" aria-label="Crește consumul">+</label>
+</div><div class="cstate s129" data-consumption="12.9">
+<label class="step" for="c128" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">12.9</div>
+<label class="step" for="c130" aria-label="Crește consumul">+</label>
+</div><div class="cstate s130" data-consumption="13.0">
+<label class="step" for="c129" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.0</div>
+<label class="step" for="c131" aria-label="Crește consumul">+</label>
+</div><div class="cstate s131" data-consumption="13.1">
+<label class="step" for="c130" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.1</div>
+<label class="step" for="c132" aria-label="Crește consumul">+</label>
+</div><div class="cstate s132" data-consumption="13.2">
+<label class="step" for="c131" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.2</div>
+<label class="step" for="c133" aria-label="Crește consumul">+</label>
+</div><div class="cstate s133" data-consumption="13.3">
+<label class="step" for="c132" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.3</div>
+<label class="step" for="c134" aria-label="Crește consumul">+</label>
+</div><div class="cstate s134" data-consumption="13.4">
+<label class="step" for="c133" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.4</div>
+<label class="step" for="c135" aria-label="Crește consumul">+</label>
+</div><div class="cstate s135" data-consumption="13.5">
+<label class="step" for="c134" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.5</div>
+<label class="step" for="c136" aria-label="Crește consumul">+</label>
+</div><div class="cstate s136" data-consumption="13.6">
+<label class="step" for="c135" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.6</div>
+<label class="step" for="c137" aria-label="Crește consumul">+</label>
+</div><div class="cstate s137" data-consumption="13.7">
+<label class="step" for="c136" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.7</div>
+<label class="step" for="c138" aria-label="Crește consumul">+</label>
+</div><div class="cstate s138" data-consumption="13.8">
+<label class="step" for="c137" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.8</div>
+<label class="step" for="c139" aria-label="Crește consumul">+</label>
+</div><div class="cstate s139" data-consumption="13.9">
+<label class="step" for="c138" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">13.9</div>
+<label class="step" for="c140" aria-label="Crește consumul">+</label>
+</div><div class="cstate s140" data-consumption="14.0">
+<label class="step" for="c139" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.0</div>
+<label class="step" for="c141" aria-label="Crește consumul">+</label>
+</div><div class="cstate s141" data-consumption="14.1">
+<label class="step" for="c140" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.1</div>
+<label class="step" for="c142" aria-label="Crește consumul">+</label>
+</div><div class="cstate s142" data-consumption="14.2">
+<label class="step" for="c141" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.2</div>
+<label class="step" for="c143" aria-label="Crește consumul">+</label>
+</div><div class="cstate s143" data-consumption="14.3">
+<label class="step" for="c142" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.3</div>
+<label class="step" for="c144" aria-label="Crește consumul">+</label>
+</div><div class="cstate s144" data-consumption="14.4">
+<label class="step" for="c143" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.4</div>
+<label class="step" for="c145" aria-label="Crește consumul">+</label>
+</div><div class="cstate s145" data-consumption="14.5">
+<label class="step" for="c144" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.5</div>
+<label class="step" for="c146" aria-label="Crește consumul">+</label>
+</div><div class="cstate s146" data-consumption="14.6">
+<label class="step" for="c145" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.6</div>
+<label class="step" for="c147" aria-label="Crește consumul">+</label>
+</div><div class="cstate s147" data-consumption="14.7">
+<label class="step" for="c146" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.7</div>
+<label class="step" for="c148" aria-label="Crește consumul">+</label>
+</div><div class="cstate s148" data-consumption="14.8">
+<label class="step" for="c147" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.8</div>
+<label class="step" for="c149" aria-label="Crește consumul">+</label>
+</div><div class="cstate s149" data-consumption="14.9">
+<label class="step" for="c148" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">14.9</div>
+<label class="step" for="c150" aria-label="Crește consumul">+</label>
+</div><div class="cstate s150" data-consumption="15.0">
+<label class="step" for="c149" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.0</div>
+<label class="step" for="c151" aria-label="Crește consumul">+</label>
+</div><div class="cstate s151" data-consumption="15.1">
+<label class="step" for="c150" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.1</div>
+<label class="step" for="c152" aria-label="Crește consumul">+</label>
+</div><div class="cstate s152" data-consumption="15.2">
+<label class="step" for="c151" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.2</div>
+<label class="step" for="c153" aria-label="Crește consumul">+</label>
+</div><div class="cstate s153" data-consumption="15.3">
+<label class="step" for="c152" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.3</div>
+<label class="step" for="c154" aria-label="Crește consumul">+</label>
+</div><div class="cstate s154" data-consumption="15.4">
+<label class="step" for="c153" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.4</div>
+<label class="step" for="c155" aria-label="Crește consumul">+</label>
+</div><div class="cstate s155" data-consumption="15.5">
+<label class="step" for="c154" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.5</div>
+<label class="step" for="c156" aria-label="Crește consumul">+</label>
+</div><div class="cstate s156" data-consumption="15.6">
+<label class="step" for="c155" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.6</div>
+<label class="step" for="c157" aria-label="Crește consumul">+</label>
+</div><div class="cstate s157" data-consumption="15.7">
+<label class="step" for="c156" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.7</div>
+<label class="step" for="c158" aria-label="Crește consumul">+</label>
+</div><div class="cstate s158" data-consumption="15.8">
+<label class="step" for="c157" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.8</div>
+<label class="step" for="c159" aria-label="Crește consumul">+</label>
+</div><div class="cstate s159" data-consumption="15.9">
+<label class="step" for="c158" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">15.9</div>
+<label class="step" for="c160" aria-label="Crește consumul">+</label>
+</div><div class="cstate s160" data-consumption="16.0">
+<label class="step" for="c159" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.0</div>
+<label class="step" for="c161" aria-label="Crește consumul">+</label>
+</div><div class="cstate s161" data-consumption="16.1">
+<label class="step" for="c160" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.1</div>
+<label class="step" for="c162" aria-label="Crește consumul">+</label>
+</div><div class="cstate s162" data-consumption="16.2">
+<label class="step" for="c161" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.2</div>
+<label class="step" for="c163" aria-label="Crește consumul">+</label>
+</div><div class="cstate s163" data-consumption="16.3">
+<label class="step" for="c162" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.3</div>
+<label class="step" for="c164" aria-label="Crește consumul">+</label>
+</div><div class="cstate s164" data-consumption="16.4">
+<label class="step" for="c163" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.4</div>
+<label class="step" for="c165" aria-label="Crește consumul">+</label>
+</div><div class="cstate s165" data-consumption="16.5">
+<label class="step" for="c164" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.5</div>
+<label class="step" for="c166" aria-label="Crește consumul">+</label>
+</div><div class="cstate s166" data-consumption="16.6">
+<label class="step" for="c165" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.6</div>
+<label class="step" for="c167" aria-label="Crește consumul">+</label>
+</div><div class="cstate s167" data-consumption="16.7">
+<label class="step" for="c166" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.7</div>
+<label class="step" for="c168" aria-label="Crește consumul">+</label>
+</div><div class="cstate s168" data-consumption="16.8">
+<label class="step" for="c167" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.8</div>
+<label class="step" for="c169" aria-label="Crește consumul">+</label>
+</div><div class="cstate s169" data-consumption="16.9">
+<label class="step" for="c168" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">16.9</div>
+<label class="step" for="c170" aria-label="Crește consumul">+</label>
+</div><div class="cstate s170" data-consumption="17.0">
+<label class="step" for="c169" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.0</div>
+<label class="step" for="c171" aria-label="Crește consumul">+</label>
+</div><div class="cstate s171" data-consumption="17.1">
+<label class="step" for="c170" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.1</div>
+<label class="step" for="c172" aria-label="Crește consumul">+</label>
+</div><div class="cstate s172" data-consumption="17.2">
+<label class="step" for="c171" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.2</div>
+<label class="step" for="c173" aria-label="Crește consumul">+</label>
+</div><div class="cstate s173" data-consumption="17.3">
+<label class="step" for="c172" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.3</div>
+<label class="step" for="c174" aria-label="Crește consumul">+</label>
+</div><div class="cstate s174" data-consumption="17.4">
+<label class="step" for="c173" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.4</div>
+<label class="step" for="c175" aria-label="Crește consumul">+</label>
+</div><div class="cstate s175" data-consumption="17.5">
+<label class="step" for="c174" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.5</div>
+<label class="step" for="c176" aria-label="Crește consumul">+</label>
+</div><div class="cstate s176" data-consumption="17.6">
+<label class="step" for="c175" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.6</div>
+<label class="step" for="c177" aria-label="Crește consumul">+</label>
+</div><div class="cstate s177" data-consumption="17.7">
+<label class="step" for="c176" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.7</div>
+<label class="step" for="c178" aria-label="Crește consumul">+</label>
+</div><div class="cstate s178" data-consumption="17.8">
+<label class="step" for="c177" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.8</div>
+<label class="step" for="c179" aria-label="Crește consumul">+</label>
+</div><div class="cstate s179" data-consumption="17.9">
+<label class="step" for="c178" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">17.9</div>
+<label class="step" for="c180" aria-label="Crește consumul">+</label>
+</div><div class="cstate s180" data-consumption="18.0">
+<label class="step" for="c179" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.0</div>
+<label class="step" for="c181" aria-label="Crește consumul">+</label>
+</div><div class="cstate s181" data-consumption="18.1">
+<label class="step" for="c180" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.1</div>
+<label class="step" for="c182" aria-label="Crește consumul">+</label>
+</div><div class="cstate s182" data-consumption="18.2">
+<label class="step" for="c181" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.2</div>
+<label class="step" for="c183" aria-label="Crește consumul">+</label>
+</div><div class="cstate s183" data-consumption="18.3">
+<label class="step" for="c182" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.3</div>
+<label class="step" for="c184" aria-label="Crește consumul">+</label>
+</div><div class="cstate s184" data-consumption="18.4">
+<label class="step" for="c183" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.4</div>
+<label class="step" for="c185" aria-label="Crește consumul">+</label>
+</div><div class="cstate s185" data-consumption="18.5">
+<label class="step" for="c184" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.5</div>
+<label class="step" for="c186" aria-label="Crește consumul">+</label>
+</div><div class="cstate s186" data-consumption="18.6">
+<label class="step" for="c185" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.6</div>
+<label class="step" for="c187" aria-label="Crește consumul">+</label>
+</div><div class="cstate s187" data-consumption="18.7">
+<label class="step" for="c186" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.7</div>
+<label class="step" for="c188" aria-label="Crește consumul">+</label>
+</div><div class="cstate s188" data-consumption="18.8">
+<label class="step" for="c187" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.8</div>
+<label class="step" for="c189" aria-label="Crește consumul">+</label>
+</div><div class="cstate s189" data-consumption="18.9">
+<label class="step" for="c188" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">18.9</div>
+<label class="step" for="c190" aria-label="Crește consumul">+</label>
+</div><div class="cstate s190" data-consumption="19.0">
+<label class="step" for="c189" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.0</div>
+<label class="step" for="c191" aria-label="Crește consumul">+</label>
+</div><div class="cstate s191" data-consumption="19.1">
+<label class="step" for="c190" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.1</div>
+<label class="step" for="c192" aria-label="Crește consumul">+</label>
+</div><div class="cstate s192" data-consumption="19.2">
+<label class="step" for="c191" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.2</div>
+<label class="step" for="c193" aria-label="Crește consumul">+</label>
+</div><div class="cstate s193" data-consumption="19.3">
+<label class="step" for="c192" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.3</div>
+<label class="step" for="c194" aria-label="Crește consumul">+</label>
+</div><div class="cstate s194" data-consumption="19.4">
+<label class="step" for="c193" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.4</div>
+<label class="step" for="c195" aria-label="Crește consumul">+</label>
+</div><div class="cstate s195" data-consumption="19.5">
+<label class="step" for="c194" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.5</div>
+<label class="step" for="c196" aria-label="Crește consumul">+</label>
+</div><div class="cstate s196" data-consumption="19.6">
+<label class="step" for="c195" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.6</div>
+<label class="step" for="c197" aria-label="Crește consumul">+</label>
+</div><div class="cstate s197" data-consumption="19.7">
+<label class="step" for="c196" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.7</div>
+<label class="step" for="c198" aria-label="Crește consumul">+</label>
+</div><div class="cstate s198" data-consumption="19.8">
+<label class="step" for="c197" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.8</div>
+<label class="step" for="c199" aria-label="Crește consumul">+</label>
+</div><div class="cstate s199" data-consumption="19.9">
+<label class="step" for="c198" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">19.9</div>
+<label class="step" for="c200" aria-label="Crește consumul">+</label>
+</div><div class="cstate s200" data-consumption="20.0">
+<label class="step" for="c199" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.0</div>
+<label class="step" for="c201" aria-label="Crește consumul">+</label>
+</div><div class="cstate s201" data-consumption="20.1">
+<label class="step" for="c200" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.1</div>
+<label class="step" for="c202" aria-label="Crește consumul">+</label>
+</div><div class="cstate s202" data-consumption="20.2">
+<label class="step" for="c201" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.2</div>
+<label class="step" for="c203" aria-label="Crește consumul">+</label>
+</div><div class="cstate s203" data-consumption="20.3">
+<label class="step" for="c202" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.3</div>
+<label class="step" for="c204" aria-label="Crește consumul">+</label>
+</div><div class="cstate s204" data-consumption="20.4">
+<label class="step" for="c203" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.4</div>
+<label class="step" for="c205" aria-label="Crește consumul">+</label>
+</div><div class="cstate s205" data-consumption="20.5">
+<label class="step" for="c204" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.5</div>
+<label class="step" for="c206" aria-label="Crește consumul">+</label>
+</div><div class="cstate s206" data-consumption="20.6">
+<label class="step" for="c205" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.6</div>
+<label class="step" for="c207" aria-label="Crește consumul">+</label>
+</div><div class="cstate s207" data-consumption="20.7">
+<label class="step" for="c206" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.7</div>
+<label class="step" for="c208" aria-label="Crește consumul">+</label>
+</div><div class="cstate s208" data-consumption="20.8">
+<label class="step" for="c207" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.8</div>
+<label class="step" for="c209" aria-label="Crește consumul">+</label>
+</div><div class="cstate s209" data-consumption="20.9">
+<label class="step" for="c208" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">20.9</div>
+<label class="step" for="c210" aria-label="Crește consumul">+</label>
+</div><div class="cstate s210" data-consumption="21.0">
+<label class="step" for="c209" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.0</div>
+<label class="step" for="c211" aria-label="Crește consumul">+</label>
+</div><div class="cstate s211" data-consumption="21.1">
+<label class="step" for="c210" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.1</div>
+<label class="step" for="c212" aria-label="Crește consumul">+</label>
+</div><div class="cstate s212" data-consumption="21.2">
+<label class="step" for="c211" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.2</div>
+<label class="step" for="c213" aria-label="Crește consumul">+</label>
+</div><div class="cstate s213" data-consumption="21.3">
+<label class="step" for="c212" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.3</div>
+<label class="step" for="c214" aria-label="Crește consumul">+</label>
+</div><div class="cstate s214" data-consumption="21.4">
+<label class="step" for="c213" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.4</div>
+<label class="step" for="c215" aria-label="Crește consumul">+</label>
+</div><div class="cstate s215" data-consumption="21.5">
+<label class="step" for="c214" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.5</div>
+<label class="step" for="c216" aria-label="Crește consumul">+</label>
+</div><div class="cstate s216" data-consumption="21.6">
+<label class="step" for="c215" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.6</div>
+<label class="step" for="c217" aria-label="Crește consumul">+</label>
+</div><div class="cstate s217" data-consumption="21.7">
+<label class="step" for="c216" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.7</div>
+<label class="step" for="c218" aria-label="Crește consumul">+</label>
+</div><div class="cstate s218" data-consumption="21.8">
+<label class="step" for="c217" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.8</div>
+<label class="step" for="c219" aria-label="Crește consumul">+</label>
+</div><div class="cstate s219" data-consumption="21.9">
+<label class="step" for="c218" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">21.9</div>
+<label class="step" for="c220" aria-label="Crește consumul">+</label>
+</div><div class="cstate s220" data-consumption="22.0">
+<label class="step" for="c219" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.0</div>
+<label class="step" for="c221" aria-label="Crește consumul">+</label>
+</div><div class="cstate s221" data-consumption="22.1">
+<label class="step" for="c220" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.1</div>
+<label class="step" for="c222" aria-label="Crește consumul">+</label>
+</div><div class="cstate s222" data-consumption="22.2">
+<label class="step" for="c221" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.2</div>
+<label class="step" for="c223" aria-label="Crește consumul">+</label>
+</div><div class="cstate s223" data-consumption="22.3">
+<label class="step" for="c222" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.3</div>
+<label class="step" for="c224" aria-label="Crește consumul">+</label>
+</div><div class="cstate s224" data-consumption="22.4">
+<label class="step" for="c223" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.4</div>
+<label class="step" for="c225" aria-label="Crește consumul">+</label>
+</div><div class="cstate s225" data-consumption="22.5">
+<label class="step" for="c224" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.5</div>
+<label class="step" for="c226" aria-label="Crește consumul">+</label>
+</div><div class="cstate s226" data-consumption="22.6">
+<label class="step" for="c225" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.6</div>
+<label class="step" for="c227" aria-label="Crește consumul">+</label>
+</div><div class="cstate s227" data-consumption="22.7">
+<label class="step" for="c226" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.7</div>
+<label class="step" for="c228" aria-label="Crește consumul">+</label>
+</div><div class="cstate s228" data-consumption="22.8">
+<label class="step" for="c227" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.8</div>
+<label class="step" for="c229" aria-label="Crește consumul">+</label>
+</div><div class="cstate s229" data-consumption="22.9">
+<label class="step" for="c228" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">22.9</div>
+<label class="step" for="c230" aria-label="Crește consumul">+</label>
+</div><div class="cstate s230" data-consumption="23.0">
+<label class="step" for="c229" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.0</div>
+<label class="step" for="c231" aria-label="Crește consumul">+</label>
+</div><div class="cstate s231" data-consumption="23.1">
+<label class="step" for="c230" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.1</div>
+<label class="step" for="c232" aria-label="Crește consumul">+</label>
+</div><div class="cstate s232" data-consumption="23.2">
+<label class="step" for="c231" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.2</div>
+<label class="step" for="c233" aria-label="Crește consumul">+</label>
+</div><div class="cstate s233" data-consumption="23.3">
+<label class="step" for="c232" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.3</div>
+<label class="step" for="c234" aria-label="Crește consumul">+</label>
+</div><div class="cstate s234" data-consumption="23.4">
+<label class="step" for="c233" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.4</div>
+<label class="step" for="c235" aria-label="Crește consumul">+</label>
+</div><div class="cstate s235" data-consumption="23.5">
+<label class="step" for="c234" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.5</div>
+<label class="step" for="c236" aria-label="Crește consumul">+</label>
+</div><div class="cstate s236" data-consumption="23.6">
+<label class="step" for="c235" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.6</div>
+<label class="step" for="c237" aria-label="Crește consumul">+</label>
+</div><div class="cstate s237" data-consumption="23.7">
+<label class="step" for="c236" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.7</div>
+<label class="step" for="c238" aria-label="Crește consumul">+</label>
+</div><div class="cstate s238" data-consumption="23.8">
+<label class="step" for="c237" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.8</div>
+<label class="step" for="c239" aria-label="Crește consumul">+</label>
+</div><div class="cstate s239" data-consumption="23.9">
+<label class="step" for="c238" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">23.9</div>
+<label class="step" for="c240" aria-label="Crește consumul">+</label>
+</div><div class="cstate s240" data-consumption="24.0">
+<label class="step" for="c239" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.0</div>
+<label class="step" for="c241" aria-label="Crește consumul">+</label>
+</div><div class="cstate s241" data-consumption="24.1">
+<label class="step" for="c240" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.1</div>
+<label class="step" for="c242" aria-label="Crește consumul">+</label>
+</div><div class="cstate s242" data-consumption="24.2">
+<label class="step" for="c241" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.2</div>
+<label class="step" for="c243" aria-label="Crește consumul">+</label>
+</div><div class="cstate s243" data-consumption="24.3">
+<label class="step" for="c242" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.3</div>
+<label class="step" for="c244" aria-label="Crește consumul">+</label>
+</div><div class="cstate s244" data-consumption="24.4">
+<label class="step" for="c243" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.4</div>
+<label class="step" for="c245" aria-label="Crește consumul">+</label>
+</div><div class="cstate s245" data-consumption="24.5">
+<label class="step" for="c244" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.5</div>
+<label class="step" for="c246" aria-label="Crește consumul">+</label>
+</div><div class="cstate s246" data-consumption="24.6">
+<label class="step" for="c245" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.6</div>
+<label class="step" for="c247" aria-label="Crește consumul">+</label>
+</div><div class="cstate s247" data-consumption="24.7">
+<label class="step" for="c246" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.7</div>
+<label class="step" for="c248" aria-label="Crește consumul">+</label>
+</div><div class="cstate s248" data-consumption="24.8">
+<label class="step" for="c247" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.8</div>
+<label class="step" for="c249" aria-label="Crește consumul">+</label>
+</div><div class="cstate s249" data-consumption="24.9">
+<label class="step" for="c248" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">24.9</div>
+<label class="step" for="c250" aria-label="Crește consumul">+</label>
+</div><div class="cstate s250" data-consumption="25.0">
+<label class="step" for="c249" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.0</div>
+<label class="step" for="c251" aria-label="Crește consumul">+</label>
+</div><div class="cstate s251" data-consumption="25.1">
+<label class="step" for="c250" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.1</div>
+<label class="step" for="c252" aria-label="Crește consumul">+</label>
+</div><div class="cstate s252" data-consumption="25.2">
+<label class="step" for="c251" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.2</div>
+<label class="step" for="c253" aria-label="Crește consumul">+</label>
+</div><div class="cstate s253" data-consumption="25.3">
+<label class="step" for="c252" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.3</div>
+<label class="step" for="c254" aria-label="Crește consumul">+</label>
+</div><div class="cstate s254" data-consumption="25.4">
+<label class="step" for="c253" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.4</div>
+<label class="step" for="c255" aria-label="Crește consumul">+</label>
+</div><div class="cstate s255" data-consumption="25.5">
+<label class="step" for="c254" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.5</div>
+<label class="step" for="c256" aria-label="Crește consumul">+</label>
+</div><div class="cstate s256" data-consumption="25.6">
+<label class="step" for="c255" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.6</div>
+<label class="step" for="c257" aria-label="Crește consumul">+</label>
+</div><div class="cstate s257" data-consumption="25.7">
+<label class="step" for="c256" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.7</div>
+<label class="step" for="c258" aria-label="Crește consumul">+</label>
+</div><div class="cstate s258" data-consumption="25.8">
+<label class="step" for="c257" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.8</div>
+<label class="step" for="c259" aria-label="Crește consumul">+</label>
+</div><div class="cstate s259" data-consumption="25.9">
+<label class="step" for="c258" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">25.9</div>
+<label class="step" for="c260" aria-label="Crește consumul">+</label>
+</div><div class="cstate s260" data-consumption="26.0">
+<label class="step" for="c259" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.0</div>
+<label class="step" for="c261" aria-label="Crește consumul">+</label>
+</div><div class="cstate s261" data-consumption="26.1">
+<label class="step" for="c260" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.1</div>
+<label class="step" for="c262" aria-label="Crește consumul">+</label>
+</div><div class="cstate s262" data-consumption="26.2">
+<label class="step" for="c261" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.2</div>
+<label class="step" for="c263" aria-label="Crește consumul">+</label>
+</div><div class="cstate s263" data-consumption="26.3">
+<label class="step" for="c262" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.3</div>
+<label class="step" for="c264" aria-label="Crește consumul">+</label>
+</div><div class="cstate s264" data-consumption="26.4">
+<label class="step" for="c263" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.4</div>
+<label class="step" for="c265" aria-label="Crește consumul">+</label>
+</div><div class="cstate s265" data-consumption="26.5">
+<label class="step" for="c264" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.5</div>
+<label class="step" for="c266" aria-label="Crește consumul">+</label>
+</div><div class="cstate s266" data-consumption="26.6">
+<label class="step" for="c265" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.6</div>
+<label class="step" for="c267" aria-label="Crește consumul">+</label>
+</div><div class="cstate s267" data-consumption="26.7">
+<label class="step" for="c266" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.7</div>
+<label class="step" for="c268" aria-label="Crește consumul">+</label>
+</div><div class="cstate s268" data-consumption="26.8">
+<label class="step" for="c267" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.8</div>
+<label class="step" for="c269" aria-label="Crește consumul">+</label>
+</div><div class="cstate s269" data-consumption="26.9">
+<label class="step" for="c268" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">26.9</div>
+<label class="step" for="c270" aria-label="Crește consumul">+</label>
+</div><div class="cstate s270" data-consumption="27.0">
+<label class="step" for="c269" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.0</div>
+<label class="step" for="c271" aria-label="Crește consumul">+</label>
+</div><div class="cstate s271" data-consumption="27.1">
+<label class="step" for="c270" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.1</div>
+<label class="step" for="c272" aria-label="Crește consumul">+</label>
+</div><div class="cstate s272" data-consumption="27.2">
+<label class="step" for="c271" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.2</div>
+<label class="step" for="c273" aria-label="Crește consumul">+</label>
+</div><div class="cstate s273" data-consumption="27.3">
+<label class="step" for="c272" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.3</div>
+<label class="step" for="c274" aria-label="Crește consumul">+</label>
+</div><div class="cstate s274" data-consumption="27.4">
+<label class="step" for="c273" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.4</div>
+<label class="step" for="c275" aria-label="Crește consumul">+</label>
+</div><div class="cstate s275" data-consumption="27.5">
+<label class="step" for="c274" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.5</div>
+<label class="step" for="c276" aria-label="Crește consumul">+</label>
+</div><div class="cstate s276" data-consumption="27.6">
+<label class="step" for="c275" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.6</div>
+<label class="step" for="c277" aria-label="Crește consumul">+</label>
+</div><div class="cstate s277" data-consumption="27.7">
+<label class="step" for="c276" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.7</div>
+<label class="step" for="c278" aria-label="Crește consumul">+</label>
+</div><div class="cstate s278" data-consumption="27.8">
+<label class="step" for="c277" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.8</div>
+<label class="step" for="c279" aria-label="Crește consumul">+</label>
+</div><div class="cstate s279" data-consumption="27.9">
+<label class="step" for="c278" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">27.9</div>
+<label class="step" for="c280" aria-label="Crește consumul">+</label>
+</div><div class="cstate s280" data-consumption="28.0">
+<label class="step" for="c279" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.0</div>
+<label class="step" for="c281" aria-label="Crește consumul">+</label>
+</div><div class="cstate s281" data-consumption="28.1">
+<label class="step" for="c280" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.1</div>
+<label class="step" for="c282" aria-label="Crește consumul">+</label>
+</div><div class="cstate s282" data-consumption="28.2">
+<label class="step" for="c281" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.2</div>
+<label class="step" for="c283" aria-label="Crește consumul">+</label>
+</div><div class="cstate s283" data-consumption="28.3">
+<label class="step" for="c282" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.3</div>
+<label class="step" for="c284" aria-label="Crește consumul">+</label>
+</div><div class="cstate s284" data-consumption="28.4">
+<label class="step" for="c283" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.4</div>
+<label class="step" for="c285" aria-label="Crește consumul">+</label>
+</div><div class="cstate s285" data-consumption="28.5">
+<label class="step" for="c284" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.5</div>
+<label class="step" for="c286" aria-label="Crește consumul">+</label>
+</div><div class="cstate s286" data-consumption="28.6">
+<label class="step" for="c285" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.6</div>
+<label class="step" for="c287" aria-label="Crește consumul">+</label>
+</div><div class="cstate s287" data-consumption="28.7">
+<label class="step" for="c286" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.7</div>
+<label class="step" for="c288" aria-label="Crește consumul">+</label>
+</div><div class="cstate s288" data-consumption="28.8">
+<label class="step" for="c287" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.8</div>
+<label class="step" for="c289" aria-label="Crește consumul">+</label>
+</div><div class="cstate s289" data-consumption="28.9">
+<label class="step" for="c288" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">28.9</div>
+<label class="step" for="c290" aria-label="Crește consumul">+</label>
+</div><div class="cstate s290" data-consumption="29.0">
+<label class="step" for="c289" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.0</div>
+<label class="step" for="c291" aria-label="Crește consumul">+</label>
+</div><div class="cstate s291" data-consumption="29.1">
+<label class="step" for="c290" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.1</div>
+<label class="step" for="c292" aria-label="Crește consumul">+</label>
+</div><div class="cstate s292" data-consumption="29.2">
+<label class="step" for="c291" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.2</div>
+<label class="step" for="c293" aria-label="Crește consumul">+</label>
+</div><div class="cstate s293" data-consumption="29.3">
+<label class="step" for="c292" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.3</div>
+<label class="step" for="c294" aria-label="Crește consumul">+</label>
+</div><div class="cstate s294" data-consumption="29.4">
+<label class="step" for="c293" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.4</div>
+<label class="step" for="c295" aria-label="Crește consumul">+</label>
+</div><div class="cstate s295" data-consumption="29.5">
+<label class="step" for="c294" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.5</div>
+<label class="step" for="c296" aria-label="Crește consumul">+</label>
+</div><div class="cstate s296" data-consumption="29.6">
+<label class="step" for="c295" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.6</div>
+<label class="step" for="c297" aria-label="Crește consumul">+</label>
+</div><div class="cstate s297" data-consumption="29.7">
+<label class="step" for="c296" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.7</div>
+<label class="step" for="c298" aria-label="Crește consumul">+</label>
+</div><div class="cstate s298" data-consumption="29.8">
+<label class="step" for="c297" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.8</div>
+<label class="step" for="c299" aria-label="Crește consumul">+</label>
+</div><div class="cstate s299" data-consumption="29.9">
+<label class="step" for="c298" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">29.9</div>
+<label class="step" for="c300" aria-label="Crește consumul">+</label>
+</div><div class="cstate s300" data-consumption="30.0">
+<label class="step" for="c299" aria-label="Scade consumul">−</label>
+<div class="input fake-input" aria-live="polite">30.0</div>
+<label class="step disabled" for="c300" aria-label="Crește consumul">+</label>
+</div></div>
+<div class="hint">Apasă − / + pentru a schimba consumul cu 0,1 L/100 km. Controlul funcționează în preview chiar și când JavaScript este blocat.</div>
+<div class="row"><div style="flex:1"><div class="label" style="margin-bottom:5px">RON/litru</div><input class="input" id="fuel" inputmode="decimal" value="9,0"></div><div style="flex:1"><div class="label" style="margin-bottom:5px">Cost/km manual (opțional)</div><input class="input" id="manual" inputmode="decimal" value="0"></div></div>
+<div class="cost" id="cost">Cost estimat: 0,63 RON/km</div>
+<button class="btn yellow" id="save" type="button">Salvează consumul și costurile</button>
+<div class="preview-note">În APK, consumul poate fi și scris manual. Preview-ul păstrează butoanele − / + funcționale fără script.</div>
+</div>
+<div class="btns"><button class="btn yellow" type="button">AFIȘAJ</button><button class="btn red" type="button">STOP</button></div><button class="btn green" style="margin-top:12px" type="button">▶ START ANALIZĂ</button>
+<div class="overlay"><b>ProfitRide</b><h2>Ofertă detectată</h2><div class="tiny">analiză live</div><div class="row"><div class="box"><div class="label">PREȚ</div><div class="value">45 RON</div></div><div class="box"><div class="label">DISTANȚĂ</div><div class="value">12 km</div></div><div class="box"><div class="label">TIMP</div><div class="value">28 min</div></div></div><div class="row"><div class="box"><div class="label">RON/KM</div><div class="value">3,75</div></div><div class="box"><div class="label">RON/ORĂ</div><div class="value">96,43</div></div><div class="box"><div class="label">PROFIT</div><div class="value" id="profit">37,44</div></div></div><div class="verdict good">✓ PESTE PRAGURILE TALE</div></div>
+<div style="text-align:center;color:#aaa;font-size:13px;font-weight:700;margin:20px 0 4px">Creat de Plesia Razvan</div>
+</div>
+<script>
+(function(){
+  const f=document.getElementById('fuel'), m=document.getElementById('manual'), cost=document.getElementById('cost'), profit=document.getElementById('profit');
+  const n=v=>{const x=parseFloat(String(v).replace(',','.'));return Number.isFinite(x)?Math.max(0,x):0};
+  function selectedConsumption(){const r=document.querySelector('input[name="consumptionStep"]:checked');return r?n(r.value):7;}
+  function update(){let cp=n(m.value);if(cp<=0) cp=(selectedConsumption()/100)*n(f.value);cost.textContent='Cost estimat: '+cp.toFixed(2).replace('.',',')+' RON/km';profit.textContent=(45-12*cp).toFixed(2).replace('.',',');}
+  document.querySelectorAll('input[name="consumptionStep"]').forEach(r=>r.addEventListener('change',update));
+  [f,m].forEach(el=>el.addEventListener('input',update));
+  const save=document.getElementById('save');save.addEventListener('click',()=>{update();save.textContent='✓ Salvat';setTimeout(()=>save.textContent='Salvează consumul și costurile',900)});
+  update();
+})();
+</script>
+</body>
+</html>

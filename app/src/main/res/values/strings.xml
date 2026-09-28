@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProfitRide</string>
+    <string name="creator_credit">Creat de Plesia Razvan</string>
+    <string name="accessibility_description">Detectează doar când Bolt Driver/Waze este pe ecran și apăsările Acceptă/Refuză pentru resetare, pauză și ascunderea automată a cardului.</string>
+</resources>

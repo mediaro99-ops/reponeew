@@ -1,0 +1,42 @@
+workflows:
+  profitride-debug:
+    name: ProfitRide APK
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+
+    environment:
+      java: 17
+
+    scripts:
+      - name: Build ProfitRide APK
+        script: |
+          set -e
+          cd "$CM_BUILD_DIR"
+
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+
+          if [ ! -f "app/build.gradle" ]; then
+            echo "EROARE: app/build.gradle lipsește din repository."
+            exit 1
+          fi
+
+          if [ ! -f "gradlew" ]; then
+            echo "Gradle Wrapper lipsește. Îl generez acum..."
+            gradle wrapper --gradle-version 8.9
+          fi
+
+          chmod +x gradlew
+          ./gradlew :app:assembleDebug --stacktrace
+
+          APK="$(find "$CM_BUILD_DIR/app/build/outputs/apk/debug" -type f -name "*.apk" | head -n 1 || true)"
+
+          if [ -z "$APK" ]; then
+            echo "EROARE: APK-ul nu a fost găsit."
+            exit 1
+          fi
+
+          cp "$APK" "$CM_BUILD_DIR/ProfitRide.apk"
+          echo "APK creat: $CM_BUILD_DIR/ProfitRide.apk"
+
+    artifacts:
+      - ProfitRide.apk
